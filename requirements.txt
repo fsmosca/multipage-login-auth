@@ -1,0 +1,6 @@
+streamlit
+streamlit-login-auth-ui
+argon2-cffi
+lxml
+html5lib
+streamlit-aggrid
