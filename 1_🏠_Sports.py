@@ -18,6 +18,7 @@ page_setting(
 def main():
     st.title('Sports page')
 
+    is_login = False
     login = Login()
     # logauth = login.login_auth(auth_token=st.secrets['your_courier_auth_token'])  # streamlit cloud
     logauth = login.login_auth(auth_token='courier_auth_token')
