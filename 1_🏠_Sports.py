@@ -19,7 +19,8 @@ def main():
     st.title('Sports page')
 
     login = Login()
-    logauth = login.login_auth(auth_token=st.secrets['courier_auth_token'])
+    # logauth = login.login_auth(auth_token=st.secrets['your_courier_auth_token'])  # streamlit cloud
+    logauth = login.login_auth(auth_token='courier_auth_token')
 
     # Do not crash the app. If auth key is invalid, send an error message.
     try:
