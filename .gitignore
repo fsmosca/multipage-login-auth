@@ -129,3 +129,4 @@ dmypy.json
 .pyre/
 
 secrets.toml
+_secret_auth_.json
