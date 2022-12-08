@@ -30,7 +30,13 @@ def main():
         st.error('CourierAPIException, email notification might not be supported. Please contact the developer.')
 
     if is_login:
-        pass
+        # Get user name.
+        with st.expander('Username', expanded=False):
+            username = get_username(logauth)
+            st.markdown(f'''
+            Welcome user <span style="color: blue;">**{username}!**</span>
+            ''',
+            unsafe_allow_html=True)
 
 
     st.markdown(f'''
