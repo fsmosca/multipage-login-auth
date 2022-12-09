@@ -19,8 +19,6 @@ page_setting(
 def main():
     st.title('Sports page')
 
-    user = st.empty()
-
     info = Sports()
     info.information()
 
@@ -38,7 +36,7 @@ def main():
     if is_login:
         # Get user name.
         username = None
-        with user.expander('Username', expanded=False):
+        with st.expander('Username', expanded=False):
             username = get_username(logauth)
             st.markdown(f'''
             Welcome user <span style="color: blue;">**{username}!**</span>
