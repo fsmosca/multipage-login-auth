@@ -6,6 +6,8 @@ Manages user authentication. It supports sports main page.
 
 import streamlit as st
 from streamlit_login_auth_ui.widgets import __login__
+import json
+import pandas as pd
 
 
 class Login:
@@ -32,3 +34,10 @@ def get_username(logauth):
         if '__streamlit_login_signup_ui_username__' in fetched_cookies.keys():
             username = fetched_cookies['__streamlit_login_signup_ui_username__']
             return username
+
+
+def get_users_info():
+    with open('_secret_auth_.json') as f:
+        data = json.load(f)
+    
+    return pd.DataFrame.from_dict(data)
