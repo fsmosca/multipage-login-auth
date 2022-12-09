@@ -4,7 +4,7 @@
 
 import streamlit as st
 from modules.utility import page_setting
-from modules.login import Login, get_username
+from modules.login import Login, get_username, get_users_info
 import trycourier
 from modules.sports import Sports
 
@@ -37,12 +37,18 @@ def main():
 
     if is_login:
         # Get user name.
+        username = None
         with user.expander('Username', expanded=False):
             username = get_username(logauth)
             st.markdown(f'''
             Welcome user <span style="color: blue;">**{username}!**</span>
             ''',
             unsafe_allow_html=True)
+
+        # Get users info.
+        if username == 'ferdz':
+            df_users = get_users_info()
+            st.dataframe(df_users)
 
 
 if __name__ == '__main__':
