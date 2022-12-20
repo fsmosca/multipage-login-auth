@@ -4,7 +4,7 @@
 
 import streamlit as st
 from modules.utility import page_setting
-from modules.login import Login, get_username, get_users_info
+from modules.login import Login
 import trycourier
 from modules.sports import Sports
 
@@ -23,9 +23,11 @@ def main():
     info.information()
 
     is_login = False
-    login = Login()
-    # logauth = login.login_auth(auth_token=st.secrets['your_courier_auth_token'])  # streamlit cloud
-    logauth = login.login_auth(auth_token='courier_auth_token')
+
+    users_auth_file = st.secrets['users_auth_file']
+    courier_auth_token = st.secrets['courier_auth_token']
+    login = Login(users_auth_file, courier_auth_token)
+    logauth = login.login_auth()
 
     # Do not crash the app. If auth key is invalid, send an error message.
     try:
@@ -37,7 +39,7 @@ def main():
         # Get user name.
         username = None
         with st.expander('Username', expanded=False):
-            username = get_username(logauth)
+            username = logauth.get_username()
             st.markdown(f'''
             Welcome user <span style="color: blue;">**{username}!**</span>
             ''',
@@ -45,7 +47,7 @@ def main():
 
         # Get users info.
         if username == 'ferdz':
-            df_users = get_users_info()
+            df_users = login.get_users_info()
             st.dataframe(df_users)
 
 
