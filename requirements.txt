@@ -1,5 +1,5 @@
 streamlit
-streamlit-login-auth-ui
+git+https://github.com/fsmosca/streamlit_login_auth_ui.git@username-is-not-case-sensitive
 argon2-cffi
 lxml
 html5lib
