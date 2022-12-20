@@ -6,5 +6,4 @@ A demo on Streamlit **multipage** feature and **streamlit-login-auth-ui** packag
 
 The [app](https://gameplay.streamlit.app/) is hosted by streamlit cloud.
 
-![image](https://user-images.githubusercontent.com/22366935/206367289-79e0d8fb-6128-4997-9a7b-e1ddffa81f8a.png)
-
+![image](https://user-images.githubusercontent.com/22366935/208570011-11a63c8c-e243-48a4-a2e4-9d14a4c901c5.png)
