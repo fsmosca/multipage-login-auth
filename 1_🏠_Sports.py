@@ -20,8 +20,6 @@ def main():
     st.title('Sports page')
 
     info = Sports()
-    info.information()
-
     is_login = False
 
     users_auth_file = st.secrets['users_auth_file']
@@ -34,6 +32,8 @@ def main():
         is_login = logauth.build_login_ui()
     except trycourier.exceptions.CourierAPIException:
         st.error('CourierAPIException, email notification might not be supported. Please contact the developer.')
+
+    info.information()
 
     if is_login:
         # Get user name.
