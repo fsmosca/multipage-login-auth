@@ -11,9 +11,10 @@ import pandas as pd
 
 
 class Login:
-    def __init__(self, users_auth_file, courier_auth_token):
+    def __init__(self, users_auth_file, courier_auth_token, db):
         self.users_auth_file = users_auth_file
         self.courier_auth_token = courier_auth_token
+        self.db = db
 
     def login_auth(self):
         ret = __login__(
@@ -25,7 +26,8 @@ class Login:
             hide_menu_bool=False,
             hide_footer_bool=False,
             lottie_url='https://assets2.lottiefiles.com/packages/lf20_jcikwtux.json',
-            users_auth_file=self.users_auth_file
+            users_auth_file=self.users_auth_file,
+            detadb=self.db
         )
         return ret
 

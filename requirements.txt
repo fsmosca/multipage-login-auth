@@ -4,3 +4,4 @@ argon2-cffi
 lxml
 html5lib
 streamlit-aggrid
+deta

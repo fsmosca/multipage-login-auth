@@ -36,7 +36,39 @@ class Sports:
         [argon2-cffi](https://pypi.org/project/argon2-cffi/) manages the
         password hashing.
         The user info along with the hashed password is saved in the file
-        `_secret_auth_.json` under the streamlit project folder.
+        `_secret_auth_.json` by default under the streamlit project folder. The filename
+        can be changed with the use of the **secrets.toml** file when deployed locally,
+        or with the use of
+        [secrets management](https://docs.streamlit.io/streamlit-cloud/get-started/deploy-an-app/connect-to-data-sources/secrets-management)
+        when deployed in **streamlit cloud**. Saving the users info in the free streamlit
+        cloud is not safe. It is better to save it to a cloud database. The package
+        `streamlit_login_auth_ui` under branch `username-is-not-case-sensitive` now
+        supports saving the users info in the [deta](https://www.deta.sh/) database.
+        This app saves users info in deta base. Note deta is free.
+
+        ```python
+        db = None
+        users_auth_file = st.secrets['secrets_users_auth_file']
+        auth_token = st.secrets['secrets_courier_auth_token']
+
+        __login__obj = __login__(
+            auth_token=auth_token,
+            company_name="Shims",
+            width=200,
+            height=250,
+            logout_button_name='Logout',
+            hide_menu_bool=False,
+            hide_footer_bool=False,
+            lottie_url='https://assets2.lottiefiles.com/packages/lf20_jcikwtux.json',
+            users_auth_file=users_auth_file,
+            is_disable_login=False,
+            detadb=db)
+
+        is_logged_in = __login__obj.build_login_ui()
+        if is_logged_in:
+            do_stuff()  # This is your entry after successfull log in.
+        ```
+
         ##### The courier service
         [Courier](https://www.courier.com/) handles the email notification
         when user forgets the password. It will send a temporary password
