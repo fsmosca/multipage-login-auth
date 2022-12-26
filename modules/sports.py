@@ -43,8 +43,9 @@ class Sports:
         when deployed in **streamlit cloud**. Saving the users info in the free streamlit
         cloud is not safe. It is better to save it to a cloud database. The package
         [streamlit_login_auth_ui](https://github.com/GauriSP10/streamlit_login_auth_ui) under branch [username-is-not-case-sensitive](https://github.com/fsmosca/streamlit_login_auth_ui/tree/username-is-not-case-sensitive) now
-        supports saving the users info in the [deta](https://www.deta.sh/) database.
-        This app saves users info in deta base. Note deta is free.
+        supports saving the users info in the [deta](https://www.deta.sh/) database. The developer
+        has to register at deta to get a project key. This app saves users
+        info in deta base. Note deta is free.
 
         ```python
         from streamlit_login_auth_ui.mydeta import deta_db
