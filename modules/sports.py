@@ -42,14 +42,21 @@ class Sports:
         [secrets management](https://docs.streamlit.io/streamlit-cloud/get-started/deploy-an-app/connect-to-data-sources/secrets-management)
         when deployed in **streamlit cloud**. Saving the users info in the free streamlit
         cloud is not safe. It is better to save it to a cloud database. The package
-        `streamlit_login_auth_ui` under branch `username-is-not-case-sensitive` now
+        [streamlit_login_auth_ui](https://github.com/GauriSP10/streamlit_login_auth_ui) under branch [username-is-not-case-sensitive](https://github.com/fsmosca/streamlit_login_auth_ui/tree/username-is-not-case-sensitive) now
         supports saving the users info in the [deta](https://www.deta.sh/) database.
         This app saves users info in deta base. Note deta is free.
 
         ```python
-        db = None
+        from streamlit_login_auth_ui.mydeta import deta_db
+
+        detadb = None
         users_auth_file = st.secrets['secrets_users_auth_file']
         auth_token = st.secrets['secrets_courier_auth_token']
+
+        # Save users info to deta base.
+        deta_project_key = st.secrets['Deta_Project_Key']
+        deta_db_name = st.secrets['Deta_Db_Name']
+        detadb = deta_db(deta_project_key, deta_db_name)
 
         __login__obj = __login__(
             auth_token=auth_token,
@@ -62,7 +69,7 @@ class Sports:
             lottie_url='https://assets2.lottiefiles.com/packages/lf20_jcikwtux.json',
             users_auth_file=users_auth_file,
             is_disable_login=False,
-            detadb=db)
+            detadb=detadb)
 
         is_logged_in = __login__obj.build_login_ui()
         if is_logged_in:
